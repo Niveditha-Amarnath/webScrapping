@@ -1,0 +1,33 @@
+#Checking whether website can be scrapped
+path = paths_allowed("https://shopping.indiamart.com/search.php?ss=9836723530&rd=2")
+# SCRAPPING WEBSITE
+link <- 
+'https://shopping.indiamart.com/search.php?ss=9836723530&rd=2'
+
+# HTML ELEMENTS FROM WEBSITE
+web <- read_html(link)
+
+# SEGREGATING NAMES
+Product <- web %>% 
+  html_nodes(".lne2txt")%>% html_text()
+
+# VIEWING NAME LIST
+View(Product)
+
+# THE PRICE
+Price <- web %>% html_nodes(".clr1.db") %>% html_text()
+
+# VIEW DETAILS
+View(Price)
+Details <- web %>% html_nodes(".lne1txt .db") %>% html_text()
+View(Details)
+
+
+# CREATING DATAFRAME
+my.table <- data.frame(Product,Details,Price)
+
+# VIEW DATAFRAME
+View(my.table)
+
+# SAVING DATA
+write.csv (my.table, "My_Table data.csv")
