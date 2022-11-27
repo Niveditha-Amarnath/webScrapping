@@ -1,3 +1,5 @@
+//web scrapping using R programming
+
 #Checking whether website can be scrapped
 path = paths_allowed("https://shopping.indiamart.com/search.php?ss=9836723530&rd=2")
 # SCRAPPING WEBSITE
